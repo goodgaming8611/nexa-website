@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXA - Masa Depan Pembayaran Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #fff; /* Warna teks putih */
+            background-image: url('background-web3.jpg'); /* Gunakan gambar sebagai background */
+            background-size: cover; /* Agar gambar menutupi seluruh halaman */
+            background-attachment: fixed; /* Agar gambar tetap stabil saat di-scroll */
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay gelap untuk meningkatkan keterbacaan teks */
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(0, 100, 0, 0.9), rgba(0, 80, 0, 0.8)); /* Gradasi hijau gelap transparan */
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5rem; /* Tulisan NEXA diperbesar */
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fff; /* Warna teks putih */
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            margin-top: 10px;
+            color: #fff; /* Warna teks putih */
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 10px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #fff; /* Warna teks putih */
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #fff; /* Warna teks putih */
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .feature {
+            background-color: white; /* Kolom berwarna putih */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(25% - 20px);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #007BFF; /* Warna biru untuk judul fitur */
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: #333; /* Warna teks gelap untuk deskripsi fitur */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #fff; /* Warna teks putih */
+        }
+
+        /* Animasi */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsivitas */
+        @media (max-width: 768px) {
+            .feature {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .header p {
+                font-size: 1.2rem;
+            }
+            .feature {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* Gaya untuk tombol ganti bahasa */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .language-switcher img.world-icon {
+            width: 30px;
+            height: 30px;
+            filter: invert(1); /* Membuat ikon dunia berwarna putih */
+        }
+
+        .language-menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        .language-menu a {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .language-menu a img {
+            width: 20px;
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .language-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .language-switcher:hover .language-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tombol Ganti Bahasa -->
+    <div class="language-switcher">
+        <button>
+            <img src="world-icon.png" alt="Ganti Bahasa" class="world-icon"> <!-- Logo bola dunia dengan filter invert -->
+        </button>
+        <div class="language-menu">
+            <a href="#" data-lang="id">
+                <img src="indonesia-flag.png" alt="Indonesia"> <!-- Bendera Indonesia tanpa filter -->
+            </a>
+            <a href="#" data-lang="en">
+                <img src="united-kingdom-flag.png" alt="English"> <!-- Bendera Inggris tanpa filter -->
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 data-translate="title">NEXA</h1>
+            <p data-translate="tagline">Masa Depan Pembayaran Digital</p>
+            <p data-translate="description">Transaksi cepat, aman, dan tanpa batas dengan Nexa.</p>
+            <button class="cta-button" data-translate="cta">Mulai Sekarang</button>
+        </header>
+
+        <section class="section">
+            <h2 data-translate="vision">Visi Kami</h2>
+            <p data-translate="vision-text">Nexa memiliki misi untuk merevolusi dunia pembayaran digital dengan blockchain. Sejak saat itu, kami telah membangun ekosistem pembayaran yang cepat, aman, dan terjangkau. Kami menciptakan fondasi untuk pasar pembayaran digital yang berkembang pesat, membuka peluang miliaran dolar dalam ekonomi global yang lebih inklusif dan efisien.</p>
+            <div class="features">
+                <div class="feature">
+                    <h3 data-translate="secure">Aman</h3>
+                    <p data-translate="secure-text">Keamanan tingkat tinggi dengan enkripsi canggih untuk melindungi transaksi dan data pengguna.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-translate="fast">Cepat</h3>
+                    <p data-translate="fast-text">Transaksi instan dengan biaya rendah, memberikan pengalaman pembayaran yang efisien.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-translate="affordable">Terjangkau</h3>
+                    <p data-translate="affordable-text">Biaya transaksi yang lebih rendah dibandingkan metode tradisional, memungkinkan aksesibilitas bagi semua orang.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 data-translate="learn-more">Pelajari Selanjutnya</h2>
+            <p data-translate="learn-more-text">Kami menyediakan informasi lebih lanjut tentang Nexa dan peluang yang tersedia. Jelajahi berbagai fitur dan manfaat untuk memahami bagaimana Nexa dapat mentransformasi transaksi digital Anda.</p>
+            <div class="features">
+                <div class="feature">
+                    <h3 data-translate="growth">Potensi Pertumbuhan</h3>
+                    <p data-translate="growth-text">Nexa beroperasi di pasar pembayaran digital yang sedang berkembang pesat, dengan potensi pertumbuhan yang sangat besar. Adopsi global Nexa membuka peluang untuk ekspansi massal di berbagai negara.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-translate="partnership">Partnership</h3>
+                    <p data-translate="partnership-text">Nexa telah bermitra dengan beberapa perusahaan fintech dan institusi keuangan terkemuka untuk memperluas jangkauan dan utilitas token Nexa. Kolaborasi ini meningkatkan kepercayaan dan adopsi platform.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-translate="roadmap">Roadmap</h3>
+                    <p data-translate="roadmap-text">Nexa memiliki roadmap yang jelas untuk pengembangan produk, termasuk peluncuran fitur-fitur baru dan peningkatan teknologi. Ekspansi global juga menjadi fokus utama Nexa dalam beberapa tahun ke depan.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p data-translate="footer">© 2025 Nexa. Semua Hak Dilindungi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data terjemahan untuk setiap bahasa
+        const translations = {
+            id: {
+                title: "NEXA",
+                tagline: "Masa Depan Pembayaran Digital",
+                description: "Transaksi cepat, aman, dan tanpa batas dengan Nexa.",
+                cta: "Mulai Sekarang",
+                vision: "Visi Kami",
+                "vision-text": "Nexa memiliki misi untuk merevolusi dunia pembayaran digital dengan blockchain. Sejak saat itu, kami telah membangun ekosistem pembayaran yang cepat, aman, dan terjangkau. Kami menciptakan fondasi untuk pasar pembayaran digital yang berkembang pesat, membuka peluang miliaran dolar dalam ekonomi global yang lebih inklusif dan efisien.",
+                secure: "Aman",
+                "secure-text": "Keamanan tingkat tinggi dengan enkripsi canggih untuk melindungi transaksi dan data pengguna.",
+                fast: "Cepat",
+                "fast-text": "Transaksi instan dengan biaya rendah, memberikan pengalaman pembayaran yang efisien.",
+                affordable: "Terjangkau",
+                "affordable-text": "Biaya transaksi yang lebih rendah dibandingkan metode tradisional, memungkinkan aksesibilitas bagi semua orang.",
+                "learn-more": "Pelajari Selanjutnya",
+                "learn-more-text": "Kami menyediakan informasi lebih lanjut tentang Nexa dan peluang yang tersedia. Jelajahi berbagai fitur dan manfaat untuk memahami bagaimana Nexa dapat mentransformasi transaksi digital Anda.",
+                growth: "Potensi Pertumbuhan",
+                "growth-text": "Nexa beroperasi di pasar pembayaran digital yang sedang berkembang pesat, dengan potensi pertumbuhan yang sangat besar. Adopsi global Nexa membuka peluang untuk ekspansi massal di berbagai negara.",
+                partnership: "Partnership",
+                "partnership-text": "Nexa telah bermitra dengan beberapa perusahaan fintech dan institusi keuangan terkemuka untuk memperluas jangkauan dan utilitas token Nexa. Kolaborasi ini meningkatkan kepercayaan dan adopsi platform.",
+                roadmap: "Roadmap",
+                "roadmap-text": "Nexa memiliki roadmap yang jelas untuk pengembangan produk, termasuk peluncuran fitur-fitur baru dan peningkatan teknologi. Ekspansi global juga menjadi fokus utama Nexa dalam beberapa tahun ke depan.",
+                footer: "© 2025 Nexa. Semua Hak Dilindungi."
+            },
+            en: {
+                title: "NEXA",
+                tagline: "The Future of Digital Payments",
+                description: "Fast, secure, and borderless transactions with Nexa.",
+                cta: "Get Started",
+                vision: "Our Vision",
+                "vision-text": "Nexa's mission is to revolutionize the world of digital payments with blockchain. Since then, we have built a fast, secure, and affordable payment ecosystem. We are creating the foundation for a rapidly growing digital payment market, opening up billions of dollars in opportunities within a more inclusive and efficient global economy.",
+                secure: "Secure",
+                "secure-text": "Top-level security with advanced encryption to protect transactions and user data.",
+                fast: "Fast",
+                "fast-text": "Instant transactions with low fees, delivering an efficient payment experience.",
+                affordable: "Affordable",
+                "affordable-text": "Lower transaction fees compared to traditional methods, enabling accessibility for everyone.",
+                "learn-more": "Learn More",
+                "learn-more-text": "We provide more information about Nexa and the available opportunities. Explore various features and benefits to understand how Nexa can transform your digital transactions.",
+                growth: "Growth Potential",
+                "growth-text": "Nexa operates in the rapidly growing digital payment market, with massive growth potential. Nexa's global adoption opens up opportunities for mass expansion across countries.",
+                partnership: "Partnerships",
+                "partnership-text": "Nexa has partnered with several leading fintech companies and financial institutions to expand its reach and utility. These collaborations enhance trust and adoption of the platform.",
+                roadmap: "Roadmap",
+                "roadmap-text": "Nexa has a clear roadmap for product development, including the launch of new features and technology upgrades. Global expansion is also a key focus for Nexa in the coming years.",
+                footer: "© 2025 Nexa. All Rights Reserved."
+            }
+        };
+
+        // Fungsi untuk mengubah bahasa
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[lang][key];
+            });
+        }
+
+        // Mengatur event untuk tombol bahasa
+        const languageButtons = document.querySelectorAll('.language-menu a');
+        languageButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = e.target.closest('a').getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+    </script>
+</body>
+</html>
